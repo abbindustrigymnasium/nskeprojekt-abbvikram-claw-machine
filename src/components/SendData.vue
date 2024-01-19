@@ -12,7 +12,7 @@
   </template>
   
   <script>
-  import { db, push, ref } from '@/components/firebase'; // Adjust the path accordingly
+  import { db, set, ref } from '@/components/firebase'; // Adjust the path accordingly
   
   export default {
     data() {
@@ -22,8 +22,8 @@
     },
     methods: {
       submitData() {
-        // Push data to the database
-        push(ref(db, 'your_data_path'), {
+        // Replace everything at the specified path 'your_data_path'
+        set(ref(db, 'servo'), {
           data: this.data,
         });
   
@@ -31,11 +31,12 @@
         this.data = '';
       },
       sendNumber() {
-        // Push the number 1 to the database
-        push(ref(db, 'your_data_path'), {
+        // Replace everything at the specified path 'your_data_path'
+        set(ref(db, 'motor'), {
           data: 1,
         });
       },
     },
   };
   </script>
+  
