@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label for="dataInput">Data:</label>
-    <input v-model="data" type="text" id="dataInput" />
+    <!-- <label for="dataInput">Data:</label>
+    <input v-model="data" type="text" id="dataInput" /> -->
 
     <!-- Slider -->
-    <label for="slider">Slider Value: {{ slider }}</label>
-    <input id="slider" type="range" v-model="slider" min="0" max="180" @input="updateSlider">
+    <!-- <label for="slider">Slider Value: {{ slider }}</label> -->
+    <!-- <input id="slider" type="range" v-model="slider" min="0" max="180" @input="updateSlider"> -->
 
     <!-- Button to continuously add 1 for every 5 milliseconds -->
     <button @mousedown="startAdding" @mouseup="stopAdding">Hold to Add 1</button>
@@ -19,8 +19,16 @@
     <!-- Button to set motor/data to 2 when held down -->
     <button @mousedown="setMotorData(2)" @mouseup="stopSettingMotorData">Hold for Motor/Data 2</button>
 
+   
+    <button @click="closeClaw">Close Claw</button>
+
+    <button @click="openClaw">Open Claw</button>
+
+
     <!-- Display the counter value -->
     <p>Counter: {{ counter }}</p>
+
+
   </div>
 </template>
 
@@ -99,6 +107,32 @@ export default {
         slider: parseInt(this.slider),
       });
     },
+    closeClaw() {
+  set(ref(db, 'servo/claw'), 1).then(() => {
+    console.log('Closing claw...');
+    setTimeout(() => {
+      set(ref(db, 'servo/claw'), 0).then(() => {
+        console.log('Claw action completed.');
+      });
+    }, 500); // 500 milliseconds = 0.5 second
+  }).catch((error) => {
+    console.error('Error performing action:', error);
+  });
+},
+
+openClaw() {
+  set(ref(db, 'servo/claw'), 2).then(() => {
+    console.log('Opening claw...');
+    setTimeout(() => {
+      set(ref(db, 'servo/claw'), 0).then(() => {
+        console.log('Claw action completed.');
+      });
+    }, 500); // 500 milliseconds = 0.5 second
+  }).catch((error) => {
+    console.error('Error performing action:', error);
+  });
+},
+
   },
 };
 </script>
