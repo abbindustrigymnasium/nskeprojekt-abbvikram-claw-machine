@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <SendData />
+    <GridComponent/>
   </div>
 </template>
 
 <script>
 import SendData from './components/SendData.vue'
+import GridComponent from './components/GridComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    SendData
+    SendData,
+    GridComponent
   }
 }
 </script>
