@@ -9,8 +9,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "COMHEM_f2578a"
-#define WIFI_PASSWORD "btmughdz"
+#define WIFI_SSID "ABB_Gym_IOT"
+#define WIFI_PASSWORD "Welcome2abb"
 
 #define motorPinRightDir 0  // Replace with the appropriate GPIO pin for motor direction
 #define motorPinRightSpeed 5  // Replace with the appropriate GPIO pin for motor speed
